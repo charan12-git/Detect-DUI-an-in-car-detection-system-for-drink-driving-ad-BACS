@@ -21,11 +21,23 @@
   <li>sqlyog657</li>
 </ul></p>
 
+<h2>Contents :</h2>
+<ul>
+  <li>Results2.jsp</li>
+  <li>opencv_face_detector_uint8.pb</li>
+  <li>age_deploy.prototxt</li>
+  <li>gender_deploy.prototxt</li>
+  <li>a few pictures to try the project on</li>
+  <li>detect.py</li>
+ </ul>
+ 
 <h2>WOrking:</h2>
 <ul>
   <li>Download my repository.</li>
   <li>Make sure all the softwares are installed.</li>
-  <li> </li>
+  <li>Run the code in eclipse using apache as a local host </li>
 </ul>
 
 <h2>Result:</h2>
+<img src="detect_woman_1.png">
+<img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png">
