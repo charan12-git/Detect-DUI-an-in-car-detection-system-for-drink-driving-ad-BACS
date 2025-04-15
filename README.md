@@ -78,17 +78,24 @@
   <li>Login as server and user and find the results</li>
 </ul>
 
-<h2>Procedure  And Results:</h2>
+<h2>Theory  And Results:</h2>
+
+<li>Design</li>
+<p>DetectDUI detects drink driving and predicts BAC through a driver’s vital signs and psychomotor coordination. Fig. 2 shows the architecture of DetectDUI. In DetectDUI, vital signs are tracked through a WiFi sensing system. The transmitter is a hotspot on a mobile phone, and the receiver is the on-board unit (OBU) of the car. Psychomotor coordination is measured by an IMU attached to the car’s steering wheel. The system comprises two main modules: a signal processing and fusion module, which prepares, cleans, processes, and fuses the two data streams, and a drink driving analyzer, which is responsible for extracting features, determining whether the driver is drunk, and producing BAC estimation. If the system determines a driver to be drunk, it issues an alert through the smartphone. Future real-world version of the system could be designed to adopt other actions in the case of emergency, e.g., taking over from the driver and placing the car in autonomous driving mode.
+
+</p>
+<img src="major-working.gif">
 
 <li>A. Extracting Vital Signs</li>
-<p>Vital signs are derived from the minute chest motions caused by breathing and heartbeats recorded by an in-car WLAN as CSI signals. While RSS only provides the average power of WiFi signals, CSI is capable of capturing more information, e.g., fading and scattering in each narrowband subcarrier channel. We leverage the amplitude and phase of these subcarriers to extract subtle chest movements.
+<p>Due to the complicated driving conditions, the in-car wireless transmission environment is noisy and unstable. The chest motions caused by breathing and heartbeat are subtle and easily contaminated by the interference. To obtain accurate vital signs from the received signals, we have carefully designed five steps to remove the interference and extract clear breathing and heartbeat patterns.
 
-Fig displays the CSI amplitude of four subcarriers, i.e., subcarriers 1, 6, 24 and 30, between a transmitter-receiver antenna pair. Despite having different amplitudes, these subcarriers are similar in general profiles. A clear periodic pattern can be observed, which reflects the breathing cycles. Nonetheless, the heartbeat cycles are hard to differentiate, due to much weaker amplitudes. The heartbeat cycles tend to be obscured by the breathing cycles. To extract both the breathing and the heartbeats, the data needs to be further processed.</p>
+To begin with, we use a Hampel filter to smooth the signal by removing outliers with abnormally high or low amplitudes. Then, we leverage power delay profile to eliminate multipath effects since the in-car environment is compact and contains many reflection paths that interfere the direct reflection from the human body. After that, we adopt principal component analysis to distill and integrate important information of subcarriers. In the fourth step, we eliminate sudden changes due to bumpy driving conditions, which have an overlapping frequency range with vital signs and cannot be removed by previous three steps. Finally, we leverage adaptive variational mode decomposition to separate and recover patterns of breathing and heartbeat. These five steps work together to purify the noisy received signals and help restore accurate vital signs.</p>
 
 
 <li>1) Collecting CSI Data:</li>
-<p></p>
+<p>Vital signs are derived from the minute chest motions caused by breathing and heartbeats recorded by an in-car WLAN as CSI signals. While RSS only provides the average power of WiFi signals, CSI is capable of capturing more information, e.g., fading and scattering in each narrowband subcarrier channel. We leverage the amplitude and phase of these subcarriers to extract subtle chest movements.</p>
 
+<img src="major-a1.gif">
 
 <li>2) Smoothing CSI Data:</li>
 <p>The CSI signals exhibit many glitches that result from factors like environmental noise and hardware imperfections. To remove these artifacts, we first adopt Hampel filter, which smooths the signals while preserving important information associated with chest motions. Applied to each subcarrier separately, the Hampel filter removes outliers that have an abnormally high or low amplitude. A data point hi is considered to be an outlier if the following condition is satisfied,
@@ -149,7 +156,7 @@ The IMU on the steering wheel captures the angular velocity G(t) and acceleratio
 First, we clean the data using a low-pass Butterworth filter to eliminate high-frequency noise. Since most human body movements are within the range of 0 ~ 20Hz [36], we set the cutoff frequency as 40Hz.
 
 Then, we segment the data so that each data segment corresponds to a single steering wheel operation. The key to data segmentation is to pinpoint the start and the end of each operation. We leverage the gyroscope signal rather than the acceleration signal for data segmentation due to the following reason. If the driver turns the steering wheel slowly and smoothly, the acceleration signal shows very small fluctuations. But as the direction of the steering wheel alters, the gyroscope signal will exhibit clear changes. When there is no steering wheel operation, the car is going straight, thus the z -axis of the gyroscope is zero. If the driver turns the steering wheel to the left or the, the angular velocity of the car changes, which is reflected by the z -axis data of the gyroscope. In our experiment, we decide that an operation starts if the z -axis reading of the gyroscope is greater than 0.01rad/s and the operation ends when the reading returns to zero. The acceleration data is synchronized with the gyroscope data so that we segment the acceleration data accordingly.</p>
-
+<img src="major-b.gif">
 
 <li>C. Extracting Features</li>
 <p>After signal pre-processing, we extract the most informative features from the signals for drink driving detection. To account for both vital signs and psychomotor coordination, we compute the following features.
@@ -163,6 +170,8 @@ Time-domain features, including statistics (mean, median, min, max, standard dev
 Frequency-domain features, including energy and the square sum of the frequency spectrum related to steering operations.
 
 To confirm that the extracted features are indicative factors of drink driving, we conduct a comprehensive correlation analysis on the relationship between individual features and BAC. Pearson’s correlation analysis is used to analyze linear correlation, with ±1 representing strong positive/negative linear relationship while 0 representing no linear relationship. Spearman’s rank correlation coefficient is used to characterize monotonic relationship, with ±1 indicating monotonically increasing/decreasing relationship, and 0 indicating no monotonic relationship. Kendall rank correlation is used to test similarity, with ±1 representing consistent positive/negative rank correlation, and 0 means no such relationship.We further analyzed the influence of each feature on the model in terms of Gini coeffient, which reflects the purity of the features, calculated as</p>
+<img src="major-tramsformer block.gif">
+
 <li>D. Detecting Drink Driving
 </li>
 <p>Given the carefully extracted vital signs and psychomotor coordination features, we need a well-performed classifier to determine whether the driver is sober or drunk. As discussed , different features have different contributions in predicting drink driving and BAC. The problem is how to combine information from vital signs and psychomotor coordination effectively for drink driving detection. The detection model should also be lightweight to be deployed in an in-car system. To solve this problem, we propose a C-Attention network with attention mechanism . The self-attention mechanism in the C-Attention network explores the relationship between any two features, resulting in a holistic integration of the vital signs and psychomotor coordination information. The self-attention mechanism of C-Attention also requires less computational resources than traditional CNN. Furthermore, to improve the predictive power of the model without increasing model complexity, the C-Attention network introduces a stack of N one-dimensional convolution layers. In our experiments in , we have compared the C-Attention network with commonly-used machine learning algorithms and demonstrated that C-Attention network has the highest prediction accuracy.
