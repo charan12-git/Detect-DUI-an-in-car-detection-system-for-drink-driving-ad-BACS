@@ -40,4 +40,61 @@
 
 <h2>Result:</h2>
 <img src="detect_woman_1.png">
-<img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png"><img src="detect_woman_1.png">
+<li>Home Page:</li>
+<img src="majorhomepage.png">
+<li>User Registration:</li>
+<img src="majorusserregistration.png">
+<li>Login Page::</li>
+<img src="majoruserlogin1.png">
+<li>User Home Page:</li>
+<img src="majorloginned1.png">
+<li>Server Home Page:</li>
+<img src="majorserver1.png">
+<li>Server Authorise and View Users:</li>
+<img src="server-viewusers.png">
+<li>Datsets Protected by Blockchain:</li>
+<img src="server-datsetblockchain.png">
+<li>User uploading Datasets:</li>
+<img src="major upload data.png">
+<li>Uploaded Datasets:</li>
+<img src="major dataset.png">
+
+
+<img src="detect_woman_1.png">
+<li>Finding Drunk or NOt by Data:</li>
+<img src="major finding by data.png">
+<li>Result:</li>
+<img src="major result.png">
+<li>Finding Drunk or NOt by Hash Code:</li>
+
+<img src="major by hash code.png">
+<li>Result:</li>
+<img src="major result hashcode.png">
+
+
+<li>Graphs of the Data:</li>
+
+<img src="major graph2.png">
+<img src="major graph1.png">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
