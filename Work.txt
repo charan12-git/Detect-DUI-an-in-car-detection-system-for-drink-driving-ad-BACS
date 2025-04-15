@@ -1,0 +1,52 @@
+DetectDUI An In Car Detection System for Drink Driving and BACs
+
+
+
+Members
+-------
+
+idnumber,
+City_Location,
+day,
+Sex,
+Age,
+Time,
+Day_of_week,
+Educational_level,
+Vehicle_driver_relation,
+Driving_experience,
+Type_of_vehicle,
+Owner_of_vehicle,
+Service_year_of_vehicle,
+Lanes_or_Medians,
+Road_allignment,
+Road_surface_type,
+Vehicle_movement,
+Type,
+hcode
+
+
+CREATE TABLE `duidetails` (
+id int(11) NOT NULL auto_increment,
+idnumber text,
+City_Location text,
+day text,
+Sex text,
+Age text,
+Time text,
+Day_of_week text,
+Educational_level text,
+Vehicle_driver_relation text,
+Driving_experience text,
+Type_of_vehicle text,
+Owner_of_vehicle text,
+Service_year_of_vehicle text,
+Lanes_or_Medians text,
+Road_allignment text,
+Road_surface_type text,
+Vehicle_movement text,
+Type text,
+hcode text,
+PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
