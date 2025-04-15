@@ -38,13 +38,13 @@
   <li>Run the code in eclipse using apache as a local host </li>
 </ul>
 
-<h2>Result:</h2>
-<img src="detect_woman_1.png">
+<h2>Working And Results:</h2>
+
 <li>Home Page:</li>
 <img src="majorhomepage.png">
 <li>User Registration:</li>
 <img src="majorusserregistration.png">
-<li>Login Page::</li>
+<li>Login Page:</li>
 <img src="majoruserlogin1.png">
 <li>User Home Page:</li>
 <img src="majorloginned1.png">
@@ -60,7 +60,7 @@
 <img src="major dataset.png">
 
 
-<img src="detect_woman_1.png">
+
 <li>Finding Drunk or NOt by Data:</li>
 <img src="major finding by data.png">
 <li>Result:</li>
